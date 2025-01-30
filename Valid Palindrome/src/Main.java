@@ -29,36 +29,40 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        String s = "tabacat";
+        String s = "tab a cat";
         String h = "Was it a car or a cat I saw?";
         System.out.println(isPalindrome(s));
         System.out.println(isPalindrome(h));
     }
 
-// first try with for loop
-//    public static boolean isPalindrome(String s) {
-//        String h = s.trim().toLowerCase().replaceAll("[a-zA-Z0-9]", "");
-//        int j = h.length() -1;
-//        for (int i = 0; i < h.length() / 2 && j > h.length() / 2; i++, j--) {
-//            if (h.charAt(i) == h.charAt(j)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    // first try with for loop
+    public static boolean isPalindrome(String s) {
+        String h = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+        int j = h.length() - 1;
+        for (int i = 0; i < j; i++, j--) {
+            if (h.charAt(i) != h.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     // second try while loop
-    public static boolean isPalindrome(String s){
-        String h = s.toLowerCase().trim().replaceAll("[a-zA-Z0-9]","");
-        int i = 0 ;
-        int j = h.length()-1 ;
-        while (j>i){
-            if(h.charAt(i)==h.charAt(j)){
-                return true;
-            }
-            i++;
-            j--;
-        }
-        return false;
-    }
+//    public static boolean isPalindrome(String s) {
+//        // Convert to lowercase and remove non-alphanumeric characters
+//        String h = s.toLowerCase().replaceAll("[^a-z0-9]", "");
+//
+//        int i = 0;
+//        int j = h.length() - 1;
+//
+//        while (i < j) {
+//            if (h.charAt(i) != h.charAt(j)) {  
+//                return false;
+//            }
+//            i++;
+//            j--;
+//        }
+//
+//        return true;
+//    }
 }
