@@ -49,6 +49,11 @@ public class Main {
         Arrays.sort(nums);
 
         for (int i = 0; i < nums.length - 2; i++) {
+            //if you find that nums[i] > 0 break >>> why >>> because if the first element is > than 0 its impossible to get a sum of 0
+            if (nums[i] > 0) {
+                break;
+            }
+            // to remove duplicates at the first
             if (i > 0 && nums[i] == nums[i - 1]) continue;
             int j = i + 1;
             int k = nums.length - 1;
@@ -59,9 +64,10 @@ public class Main {
                     j++;
                     k--;
 
-                    // Skip duplicate values for j and k
-                    while (j < k && nums[j] == nums[j - 1]) j++;
-                    while (j < k && nums[k] == nums[k + 1]) k--;
+                    // Skip duplicate values for k >> you don't need to remove duplicates at j because it follows i which removes the duplicates for u
+                    while (j < k && nums[k] == nums[k + 1]){
+                        k--;
+                    }
                 } else if (sum < 0) {
                     j++; // Increase left pointer to get a larger sum
                 } else {
